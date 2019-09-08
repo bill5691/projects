@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>William Skiles - Programming Assignment 2</title>
+
+        <!-- Include the animation script -->
+        <script type="text/javascript" src="PacMan_Game.js"></script>
+    
+        <script type="text/javascript">
+			
+            function onLoadHandler() { 
+				document.obj = {};
+				document.obj.pacman = new object('PACMAN', 4);
+				document.obj.ghost = new object('GHOST', 0.01);
+				document.addEventListener('keydown', keyMove);
+            }
+			
+            /** Start Pacman animation **/
+            function startObject(dir) {
+				if (dir == "right") {
+					document.obj.pacman.moveRight();
+					document.getElementById('ERROR_PAC').style.visibility = "hidden";
+				} else if (dir == "left") {
+					document.obj.pacman.moveLeft();
+					document.getElementById('ERROR_PAC').style.visibility = "hidden";
+				} else if (dir == "up") {
+					document.obj.pacman.moveUp();
+					document.getElementById('ERROR_PAC').style.visibility = "hidden";
+				} else {
+					document.obj.pacman.moveDown();
+					document.getElementById('ERROR_PAC').style.visibility = "hidden";
+				}
+            }
+			
+			/** Stop Pacman animation **/
+			function stopObject() {
+				document.obj.pacman.stop();
+				document.getElementById('ERROR_PAC_TEXT').innerHTML = "Pacman is stopped";
+				document.getElementById('ERROR_PAC').style.visibility = "visible";
+			}
+			
+			/** Start ghost animation based on keypress **/
+			function keyMove(keyPress) {
+				 var key = keyPress.key;
+				 
+				 switch (key) {
+					case "ArrowRight": 
+						document.obj.ghost.moveRight();
+						document.getElementById('ERROR_GHOST').style.visibility = "hidden";
+						break;
+					case "ArrowLeft": 
+						document.obj.ghost.moveLeft();
+						document.getElementById('ERROR_GHOST').style.visibility = "hidden";
+						break;
+					case "ArrowUp": 
+						document.obj.ghost.moveUp();
+						document.getElementById('ERROR_GHOST').style.visibility = "hidden";
+						break;
+					case "ArrowDown": 
+						document.obj.ghost.moveDown();
+						document.getElementById('ERROR_GHOST').style.visibility = "hidden";
+					break;
+					case " ": 
+						document.obj.ghost.stop();
+						document.getElementById('ERROR_GHOST_TEXT').innerHTML = "Ghost is stopped";
+						document.getElementById('ERROR_GHOST').style.visibility = "visible";
+					break;
+				}
+			}
+        </script> 
+    </head>
+
+    <!-- The body of the document. (Calls "onLoadHandler()" once the body is fully loaded into the browser). -->
+    <body onload="onLoadHandler()">
+		
+		Player 1: Move Pacman and collect dots&nbsp-------&nbspPlayer 2: Move the ghost and catch Pacman
+		<br><br>
+		Move Pacman with the onscreen buttons; Move the ghost with arrow keys (spacebar to stop moving)
+		
+		<p>
+        <input value="Up" type="button" onclick="startObject('up')">
+        <input value="Down" type="button" onclick="startObject('down')">
+        <input value="Left" type="button" onclick="startObject('left')">
+        <input value="Right" type="button" onclick="startObject('right')"> 
+		<input value="Stop" type="button" onclick="stopObject()">
+		<div id="ERROR_PAC" style="visibility: hidden"><span id="ERROR_PAC_TEXT">&nbsp </span></div>
+		--------------------------
+		<div id="ERROR_GHOST" style="visibility: hidden"><span id="ERROR_GHOST_TEXT">&nbsp </span></div>
+		<div id="SCORE" style="position: absolute; top: 150px; left: 790px">Pacman Score:<span id="SCORE_TEXT">&nbsp </span></div>
+		</p>
+		
+		<div id="PACMAN" style="position:absolute; top: 205px; left: 30px; height: 75px; width: 75px"><img src="pacman_8bit.png" height="75px" width="75px"></div>
+		<div id="GHOST" style="position:absolute; top:695px; left: 30px; height: 75px; width: 75px"><img src="pacman_ghost.png" height="75px" width="75px"></div>
+		<canvas id="PLAY_AREA" style="border:2px solid black" width="900px" height="600px" />
+		
+    </body>
+</html>

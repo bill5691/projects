@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="./Rock_Paper_Scissor_Lizard_Spock.js">
+    </script>
+</head>
+
+
+<body onload="initGame()">
+    
+
+    <h1>RPSLS - Concepts Example</h1>
+
+    <form action="#">
+        How many rounds:
+        <input id="ROUNDS_TO_PLAY" type="number" min="1" max="100" placeholder="Rounds?" />
+        <button onClick="startGame()" id="START_BUTTON">Start!!!</button>
+    </form>
+
+    <hr /> 
+	
+    <!-- UPDATE 9/17/2018: USER_BUTTONS renamed to USER_CHOICE_BUTTONS -->
+    <form action="#" id="USER_CHOICE_BUTTONS" hidden>
+        <button id="ROCK" onClick="userChoice(this)">Rock</button>
+        <button id="SCIS" onClick="userChoice(this)">Scissors</button>
+        <button id="PAPR" onClick="userChoice(this)">Paper</button>
+		<button id="LZRD" onClick="userChoice(this)">Lizard</button>
+		<button id="SPOK" onClick="userChoice(this)">Spock</button>
+    </form>
+	
+	<div id="GAME_DATA">Rounds Remaining:<span id="ROUNDS_REMAINING_TEXT">&nbsp </span><br><br>
+		Your choice:<span id="USER_CHOICE_TEXT">&nbsp </span><br>
+		Computer choice:<span id="COMP_CHOICE_TEXT">&nbsp </span><br><br>
+		Score:<br>You:<span id="USER_SCORE_TEXT">&nbsp </span><br>
+		Computer:<span id="COMP_SCORE_TEXT">&nbsp </span>
+	</div>
+
+</body>
+
+</html>
